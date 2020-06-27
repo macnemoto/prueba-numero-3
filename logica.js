@@ -54,27 +54,42 @@ if (err) {
 }
    
    let $ = cheerio.load(body);
-   const comentarios = [''];
+  // const comentarios = [''];
+
+  $('.thread').each((i, el) => {
+    const regex = /(\s\s\s*)/gmi;
+    const comen = [];
+    $(el).find('blockquote').each((i, el) => comen.push($(el).text().trim().replace(/(\s\s\s*)/g,"")));
+    console.log(comen)
+
+
+
+
+
+
+
    var titulo = $('span .filetitle').first().text().trim();
    const picure = $('img').attr('src');
+//var eso = $('blockquote').first().text().trim();
+//const regex = /(\s\s\s*)/gmi;
 
-var eso = $('blockquote').text().trim();
-  eso =  eso.replace("/(\s\s\s*)/gmi","");
-console.log(eso)
+const texto = $('blockquote').first().text().trim();
+//eso =  eso.replace("regex","");
+//console.log(texto)
   
  
    //var post =  $('blockquote').text(); //.each((i, el) => {  
     //var neko = post.replace("/(\s\s\s*)/g","");
 
       //console.log(nekoComentario2);
-      //var txt = `[{"titulo": "${titulo}"} , {"url": "${picure}"}, {"comentarios": "${eso}"}]`
-      //const obj = JSON.parse(txt);
-      //console.log(obj);
+      var txt = `[{"titulo": "${titulo}"} , {"url": "${picure}"}, {"comentario": "${comen}"}]`
+      const obj = JSON.parse(txt);
+      console.log(obj);
 
 
-     //res.status(200).send(obj);
+     res.status(200).send(obj);
 
-
+    } )
 })
 
  }
