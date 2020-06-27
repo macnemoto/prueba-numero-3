@@ -53,21 +53,54 @@ if (err) {
     return;
 }
    
-  let $ = cheerio.load(body);
-//Obtener la imagen principal de hilos
+   let $ = cheerio.load(body);
+   const comentarios = [''];
+   var titulo = $('span .filetitle').first().text().trim();
+   const picure = $('img').attr('src');
 
-const titulo = $('span .filetitle').first();
-const pirure = $('img').attr('src');
-//const titulo = $('span .filetitle').first();
+var eso = $('blockquote').text().trim();
+  eso =  eso.replace("/(\s\s\s*)/gmi","");
+console.log(eso)
+  
+ 
+   //var post =  $('blockquote').text(); //.each((i, el) => {  
+    //var neko = post.replace("/(\s\s\s*)/g","");
+
+      //console.log(nekoComentario2);
+      //var txt = `[{"titulo": "${titulo}"} , {"url": "${picure}"}, {"comentarios": "${eso}"}]`
+      //const obj = JSON.parse(txt);
+      //console.log(obj);
+
+
+     //res.status(200).send(obj);
+
+
+})
+
+ }
+//console.log(post)
+  //const count = comentarios.push(port);
+  //console.log(i, $(el).text())
+  
+//});
+
+
+
 //const titulo = $('span .filetitle').first();
 //console.log(pirure);
 
-//res.status(200).send(titulo.text());
-const post =  $('blockquote').each((i, el) => {
-  res.status(404 >= 100 && 404 < 600 ? err.code : 500);
-  res.send(i, $(el).text())
+
+//const json = '{ "titulo": "picure" }';
+
+
+//convertidor a json
+
+
+
+//const post =  $('blockquote').each((i, el) => {
+  //res.send(i, $(el).text())
 //res.send(i, $(el).text());
- });
+ //});
 //res.status(200).send(pirure);
 
 //Obtener el titulo del hilo
@@ -78,20 +111,7 @@ const post =  $('blockquote').each((i, el) => {
 //const post =  $('blockquote').each((i, el) => {
 //console.log(i, $(el).text())
 //res.send(i, $(el).text());
- //});
-
-
-
-});
- 
-
-
-
-
-}
 nekoMaster()
 });
 
 
-//Ejecutando la funcion nekoMinig para que se inicie con el scrip
-//nekoMinig()
